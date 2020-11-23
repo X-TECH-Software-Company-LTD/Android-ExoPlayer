@@ -1,0 +1,3 @@
+include ':Exoplayer'
+include ':app'
+rootProject.name = "Android Exoplayer"
