@@ -10,7 +10,7 @@ android:configChanges="keyboardHidden|orientation|screenSize"
 
 ## Import Library to Gradle
 
-1 - Download WebPlayer.arr and place inside "projectName/" folder .
+1 - Download xExoplayer.zip and place inside "projectName/" folder .
 
 https://cdn.xtsmm.com/android/libraries/xExoplayer.zip
 
