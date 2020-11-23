@@ -24,6 +24,7 @@ dependencies {
 ```
 
 ## Usage
+You can set UserAgent, one header key and value.
 ```
 package com.xtsmm.android.androidexoplayer;
 
@@ -75,7 +76,11 @@ public class MainActivity extends AppCompatActivity {
                     });
         }
         FrameLayout fl=new FrameLayout(this);
-        fl = new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl);
+        String userAgent = null;
+        String headerKey = null;
+        String headerValue = null;
+
+        fl = new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl,userAgent,headerKey,headerValue);
         setContentView(fl);
     }
 }
