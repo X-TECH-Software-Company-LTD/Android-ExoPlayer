@@ -4,8 +4,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Handler;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
+
+import androidx.annotation.Nullable;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -28,6 +32,11 @@ import com.google.android.exoplayer2.upstream.DefaultAllocator;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource;
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory;
+import com.google.android.exoplayer2.upstream.HttpDataSource;
+import com.google.android.exoplayer2.upstream.TransferListener;
+import com.google.android.exoplayer2.util.Util;
+
+import static com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection.*;
 
 public class xExoPlayer {
 
@@ -39,10 +48,10 @@ public class xExoPlayer {
     ExoPlayer player;
     public xExoPlayer(Activity activity){
         this.activity=activity;
-
+        activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     @SuppressLint("SetJavaScriptEnabled")
-    public FrameLayout play(String url, FrameLayout playerFrame){
+    public FrameLayout play(String url, FrameLayout playerFrame,String userAgent,String headerKey,String headerValue){
 
         int currentApiVersion = Build.VERSION.SDK_INT;
 
@@ -56,14 +65,11 @@ public class xExoPlayer {
         // This work only for android 4.4+
         if(currentApiVersion >= Build.VERSION_CODES.KITKAT)
         {
-
             activity.getWindow().getDecorView().setSystemUiVisibility(flags);
-
             final View decorView = activity.getWindow().getDecorView();
             decorView
                     .setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
                     {
-
                         @Override
                         public void onSystemUiVisibilityChange(int visibility)
                         {
@@ -74,12 +80,11 @@ public class xExoPlayer {
                         }
                     });
         }
-
         BandwidthMeter bandwidthMeter = new DefaultBandwidthMeter();
 
-        TrackSelection.Factory videoFactory = new AdaptiveTrackSelection.Factory(bandwidthMeter);
+        TrackSelection.Factory videoFactory = new AdaptiveTrackSelection.Factory();
         TrackSelector trackSelector = new DefaultTrackSelector(videoFactory);
-        //LoadControl loadControl = new DefaultLoadControl();
+
         LoadControl loadControl = new DefaultLoadControl.Builder()
                 .setAllocator(new DefaultAllocator(true, 16))
                 .setBufferDurationsMs(MIN_BUFFER_DURATION,
@@ -95,13 +100,16 @@ public class xExoPlayer {
 
         try{
             playerView.setResizeMode(AspectRatioFrameLayout.RESIZE_MODE_FILL);
-
-            DataSource.Factory dataSourceFactory = new DefaultHttpDataSourceFactory(
-                    "mmfootball", null,
+            if(userAgent==null){userAgent="xExoplayer";}
+            DefaultHttpDataSourceFactory dataSourceFactory = new DefaultHttpDataSourceFactory(
+                    userAgent, null,
                     DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
                     1000,
                     true);
-
+            if(headerKey==null || headerValue==null){}
+            else {
+                dataSourceFactory.getDefaultRequestProperties().set(headerKey, headerValue);
+            }
             HlsMediaSource mediaSource = new HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(url));
             player.setPlayWhenReady(true);
             player.prepare(mediaSource);
