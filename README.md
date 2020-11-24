@@ -21,6 +21,13 @@ https://cdn.xtsmm.com/android/libraries/xExoplayer.zip
 File -> New -> Import Module -> select Downloaded "xExoplayer" Folder
 ```
 
+3 - Add to App Gradle (path : Folder Name)
+
+```
+implementation(project(path: ':Exoplayer'))
+```
+
+
 ## Usage
 You can set UserAgent, one header key and value.
 ```
