@@ -18,7 +18,7 @@ https://cdn.xtsmm.com/android/libraries/Exoplayer.zip
 2 - Import Module
 
 ```
-File -> New -> Import Module -> select Downloaded "xExoplayer" Folder
+File -> New -> Import Module -> select Downloaded "Exoplayer" Folder
 ```
 
 3 - Add to App Gradle (path : Folder Name)
