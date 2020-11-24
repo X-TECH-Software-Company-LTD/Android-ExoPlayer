@@ -10,17 +10,15 @@ android:configChanges="keyboardHidden|orientation|screenSize"
 
 ## Import Library to Gradle
 
-1 - Download xExoplayer.zip and place inside "projectName/" folder .
+1 - Download xExoplayer.zip
 
 https://cdn.xtsmm.com/android/libraries/xExoplayer.zip
 
 
-2 - Add Library at App gradle
+2 - Import Module
 
 ```
-dependencies {
-    implementation project(path: ':Exoplayer')
-}
+File -> New -> Import Module -> select Downloaded "xExoplayer" Folder
 ```
 
 ## Usage
