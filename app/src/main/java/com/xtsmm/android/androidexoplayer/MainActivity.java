@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         String headerKey = null;
         String headerValue = null;
 
-        fl = new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl,userAgent,headerKey,headerValue);
+        fl = new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl,true,userAgent,headerKey,headerValue);
         setContentView(fl);
     }
 }
