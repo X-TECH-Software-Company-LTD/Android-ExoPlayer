@@ -12,7 +12,7 @@ android:configChanges="keyboardHidden|orientation|screenSize"
 
 1 - Download xExoplayer.zip
 
-https://cdn.xtsmm.com/android/libraries/xExoplayer.zip
+https://cdn.xtsmm.com/android/libraries/Exoplayer.zip
 
 
 2 - Import Module
