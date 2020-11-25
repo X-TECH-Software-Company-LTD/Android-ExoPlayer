@@ -10,7 +10,7 @@ android:configChanges="keyboardHidden|orientation|screenSize"
 
 ## Import Library to Gradle
 
-1 - Download xExoplayer.zip
+1 - Download xExoplayer.zip and extract it
 
 https://cdn.xtsmm.com/android/libraries/Exoplayer.zip
 
