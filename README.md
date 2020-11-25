@@ -1,7 +1,5 @@
 # Android-ExoPlayer
 HLS and other media play by Google Exoplayer
-<<<<<<< HEAD
-=======
 
 ### optional requirements
 ```
@@ -92,5 +90,3 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
-
->>>>>>> a96e71125cdb0cba12355108227f6eeb39591498
