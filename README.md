@@ -34,6 +34,22 @@ You can set UserAgent, one header key and value.
 ### Hide Controller - 
 set 3rd parameter to ``` false ```
 
+### set Repeat - 
+set 4rd parameter to ``` true ```
+
+### Parameters
+
+```
+new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl,true,true,userAgent,headerKey,headerValue);
+1.  URL =   string
+2.  FrameLayout =   View
+3.  hideController  =   boolean
+4.  setRepeat   =   boolean
+5.  userAgent   =   string
+6.  headerKey   =   string
+7.  headerValue   =   string
+```
+
 ```
 package com.xtsmm.android.androidexoplayer;
 
@@ -89,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
         String headerKey = null;
         String headerValue = null;
 
-        fl = new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl,true,userAgent,headerKey,headerValue);
+        fl = new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl,true,true,userAgent,headerKey,headerValue);
+        // 
         setContentView(fl);
     }
 }
