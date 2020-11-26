@@ -1,5 +1,6 @@
 # Android-ExoPlayer
-HLS and other media play by Google Exoplayer
+support HLS and other media, by Google Exoplayer
+
 
 ### optional requirements
 ```
