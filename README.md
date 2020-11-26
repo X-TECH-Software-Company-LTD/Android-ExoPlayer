@@ -30,6 +30,10 @@ implementation(project(path: ':Exoplayer'))
 
 ## Usage
 You can set UserAgent, one header key and value.
+
+### Hide Controller - 
+set 3rd parameter to ``` false ```
+
 ```
 package com.xtsmm.android.androidexoplayer;
 
