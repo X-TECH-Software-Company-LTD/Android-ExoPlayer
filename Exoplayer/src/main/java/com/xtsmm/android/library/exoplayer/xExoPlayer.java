@@ -51,7 +51,7 @@ public class xExoPlayer {
         activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
     @SuppressLint("SetJavaScriptEnabled")
-    public FrameLayout play(String url, FrameLayout playerFrame,Boolean showControl,String userAgent,String headerKey,String headerValue){
+    public FrameLayout play(String url, FrameLayout playerFrame,Boolean showControl,Boolean repeat,String userAgent,String headerKey,String headerValue){
 
         int currentApiVersion = Build.VERSION.SDK_INT;
 
@@ -115,6 +115,9 @@ public class xExoPlayer {
             player.setPlayWhenReady(true);
             player.prepare(mediaSource);
             player.prepare(mediaSource, true, false);
+            if(repeat) {
+                player.setRepeatMode(player.REPEAT_MODE_ONE);
+            }
             playerView.setPlayer(player);
             player.addListener(new ExoPlayer.EventListener() {
 
