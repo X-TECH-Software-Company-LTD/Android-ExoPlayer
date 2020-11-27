@@ -49,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         String userAgent = null;
         String headerKey = null;
         String headerValue = null;
-
-        fl = new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl,true,true,userAgent,headerKey,headerValue);
+        fl = new xExoPlayer(this).play("https://cdn.xtsmm.com/uploads/video/splash.mp4",fl,true,true,userAgent,headerKey,headerValue);
+        //fl = new xExoPlayer(this).play("https://content.jwplatform.com/manifests/yp34SRmf.m3u8",fl,true,true,userAgent,headerKey,headerValue);
         setContentView(fl);
     }
 }

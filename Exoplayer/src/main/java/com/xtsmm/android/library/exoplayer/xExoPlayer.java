@@ -17,6 +17,9 @@ import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.Timeline;
+import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.source.MediaSource;
+import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.source.hls.HlsMediaSource;
 import com.google.android.exoplayer2.trackselection.AdaptiveTrackSelection;
@@ -111,10 +114,17 @@ public class xExoPlayer {
             else {
                 dataSourceFactory.getDefaultRequestProperties().set(headerKey, headerValue);
             }
-            HlsMediaSource mediaSource = new HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(url));
+
             player.setPlayWhenReady(true);
-            player.prepare(mediaSource);
-            player.prepare(mediaSource, true, false);
+            if(url.contains(".m3u8")){
+                HlsMediaSource mediaSource = new HlsMediaSource.Factory(dataSourceFactory).createMediaSource(Uri.parse(url));
+                player.prepare(mediaSource, true, false);
+            }else{
+                MediaSource mediaSource = new ProgressiveMediaSource.Factory(new DefaultHttpDataSourceFactory(userAgent))
+                        .createMediaSource(Uri.parse(url));
+                player.prepare(mediaSource, true, false);
+            }
+
             if(repeat) {
                 player.setRepeatMode(player.REPEAT_MODE_ONE);
             }
